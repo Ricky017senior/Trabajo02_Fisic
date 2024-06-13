@@ -1,0 +1,127 @@
+/* Estilos CSS corregidos y mejorados */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor-calc {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.calculadora {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.campos, .ayuda {
+    flex: 1;
+}
+
+.input-container {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.campo-input, .select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.select {
+    width: calc(100% + 4px); /* Ajuste para mantener el mismo ancho que los input */
+}
+
+.alerta {
+    display: none;
+    color: red;
+    margin-top: 8px;
+}
+
+.boton {
+    cursor: pointer;
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.boton:hover {
+    background-color: #0056b3;
+}
+
+.h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.resultado {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    margin-top: 10px;
+}
+
+.formula {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.formula img {
+    max-height: 100px;
+    width: auto;
+}
+
+.variables {
+    margin-top: 20px;
+}
+
+.variables p {
+    margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+    .calculadora {
+        flex-direction: column;
+    }
+
+    .campos, .ayuda {
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 20px;
+    }
+
+    .resultado {
+        width: calc(100% - 24px);
+    }
+
+    .select {
+        width: calc(100% - 12px);
+    }
+}

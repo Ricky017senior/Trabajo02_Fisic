@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ley de Faraday</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .input-field {
+      margin-bottom: 15px;
+    }
+
+    .input-field label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; /* Espacio agregado entre los campos y los botones */
+    }
+
+    .btn {
+      background-color: #FFFF00;
+      color: #000000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ffffff;
+    }
+
+    .result {
+      margin-top: 15px;
+    }
+
+    .result label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .result input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+      background-color: #f0f0f0;
+    }
+
+    .image-container {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="calculator">
+    <h2>Ley de Faraday</h2>
+    <form @submit.prevent="calculateInducedVoltage">
+      <div class="input-field">
+        <label for="numberOfLoops">Número de espiras:</label>
+        <input type="number" v-model.number="numberOfLoops" id="numberOfLoops" placeholder="Introduzca el número de espiras" required>
+      </div>
+      <div class="input-field">
+        <label for="magneticFlux">Cambio del flujo magnético (Wb):</label>
+        <input type="number" v-model.number="magneticFlux" id="magneticFlux" placeholder="Introduzca el cambio del flujo magnético" required>
+      </div>
+      <div class="input-field">
+        <label for="timeChange">Cambio de tiempo (s):</label>
+        <input type="number" v-model.number="timeChange" id="timeChange" placeholder="Introduzca el cambio de tiempo" required>
+      </div>
+      <div class="btn-container">
+        <button type="submit" class="btn">Calcular</button>
+      </div>
+    </form>
+    <div class="result">
+      <label>Tensión inducida (V):</label>
+      <input type="text" readonly :value="inducedVoltage.toFixed(10)">
+    </div>
+    <div class="image-container">
+      <img src="https://www.experimentoscientificos.es/wp-content/uploads/2017/05/Captura.png" alt="Faraday">
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.31/vue.global.prod.min.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          numberOfLoops: 0,
+          magneticFlux: 0,
+          timeChange: 0,
+          inducedVoltage: 0
+        };
+      },
+      methods: {
+        calculateInducedVoltage() {
+          this.inducedVoltage = -1 * this.numberOfLoops * (this.magneticFlux / this.timeChange);
+        }
+      }
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+</html>
